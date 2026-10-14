@@ -1,0 +1,14 @@
+# Normalize line endings for a Windows-oriented toolkit.
+# NOTE: the .ps1 files carry a UTF-8 BOM on purpose — Windows PowerShell 5.1 reads
+# scripts as ANSI without it, which breaks any non-ASCII string in the file.
+# Git preserves the BOM; these rules only control line endings.
+* text=auto eol=lf
+
+*.ps1   text eol=crlf
+*.cmd   text eol=crlf
+*.bat   text eol=crlf
+*.lnk   binary
+*.ico   binary
+*.png   binary
+*.jpg   binary
+*.mp4   binary

@@ -1,0 +1,28 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Test / diagnostic artifacts (contain machine-specific paths and process data)
+*.log
+diag-*.json
+shots/
+res-sample.json
+
+# Local machine paths / secrets
+.env
+*.local
+secrets.*
+token.*
+
+# Editors / OS
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+*.swp
+
+# Windows
+*.lnk
+*.ico
