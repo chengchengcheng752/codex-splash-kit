@@ -1,5 +1,16 @@
 # 可直接提交的上游 bug 报告草稿
 
+> **状态：两份报告均已提交给上游。**
+> - issue #59（快捷方式 / `E_INVALIDARG`）：https://github.com/Rice-dog/code-codex/issues/59
+> - issue #60（`Add-Type` / `CC-START-CODEX-003`）：https://github.com/Rice-dog/code-codex/issues/60
+>
+> 提交前做过核对：上游 `main @ ff5ca11f7e`（v0.4.48 之后）里，
+> `crates/launcher/src/bin/code-codex-shortcut.rs` 仍以 `WScript.Shell` 写快捷方式、
+> `crates/launcher/src/gui_support.rs` 仍以 `Add-Type` 编译激活助手 —— 两条代码路径都还在，
+> 且 issue 列表中没有同类报告。
+>
+> 下面的正文保留完整格式，可用于其他同类工具，或作为本项目的长期参考。
+
 以下两份报告基于本仓库的实测证据。提交前请替换你自己机器上的版本号与最小必要信息，
 **不要**附上包含个人路径的完整日志。
 

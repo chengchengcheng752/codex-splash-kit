@@ -7,20 +7,30 @@
 [Code-Codex](https://github.com/Rice-dog/code-codex)（MIT），本项目**不打包**其代码，只提供安装工具、
 非 ASCII 环境绕行方案与诊断脚本。
 
+![启动动画演示](docs/demo.gif)
+
+> 演示里播放的是一条**自制占位动画**（`codex-splash-kit` 字样 + 渐变动画），只为展示机制。
+> 仓库不附带任何视频素材 —— 启动画面请自备，这也让它更通用。
+
 ---
 
 ## 它解决什么问题
 
-在中文（或任何非 ASCII）Windows 用户名下，`C:\Users\橙\...` 这类路径会让两个常见机制静默失效：
+在中文（或任何非 ASCII）Windows 用户名下，`C:\Users\<非ASCII 用户名>\...` 这类路径会让两个常见机制静默失效：
 
 | 缺陷 | 现象 | 影响 |
 |---|---|---|
 | 活动代码页 437 + COM 快捷方式 | `IShellLink` / `WScript.Shell` 按 ANSI 编组，用户名被压成 `?`，抛 `E_INVALIDARG` | 任何在非 ASCII 路径下建/改 `.lnk` 的工具都会失败 |
-| 非 ASCII `%TEMP%` | `Add-Type` 运行时编译 C# 时 `csc.exe` 写不进 `C:\Users\橙\...\Temp`，报「目录名称无效」 | 任何**启动时用 `Add-Type` 编译助手**的工具会直接启动失败 |
+| 非 ASCII `%TEMP%` | `Add-Type` 运行时编译 C# 时 `csc.exe` 写不进 `C:\Users\<非ASCII>\...\Temp`，报「目录名称无效」 | 任何**启动时用 `Add-Type` 编译助手**的工具会直接启动失败 |
 
 第二类缺陷会让 Code-Codex 报 `CC-START-CODEX-003` 并拒绝启动 Codex —— 这是本仓库存在的主要原因。
 
-详细实测记录见 [`docs/windows-non-ascii-pitfalls.md`](docs/windows-non-ascii-pitfalls.md)。
+两个缺陷都已提交给上游：**[issue #59](https://github.com/Rice-dog/code-codex/issues/59)**（快捷方式）、
+**[issue #60](https://github.com/Rice-dog/code-codex/issues/60)**（Add-Type）。报告正文见
+[`docs/upstream-bug-report.md`](docs/upstream-bug-report.md)。
+
+详细实测记录（三组隔离实验、最小复现脚本、绕行方案）见
+[`docs/windows-non-ascii-pitfalls.md`](docs/windows-non-ascii-pitfalls.md)。
 
 ---
 
